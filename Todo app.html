@@ -1,0 +1,124 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>待办事项</h1>
+
+        <div class="input-area">
+            <input type="text" id="todoInput" placeholder="请输入待办项..." />
+            <button id="addBtn">添加</button>
+        </div>
+
+        <ul id="todoList"></ul>
+
+        <button id="clearBtn" class="clear-all">清空所有</button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
+<!-- style.css -->
+<style>
+body {
+    font-family: Arial;
+    background: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.container {
+    width: 350px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+h1 {
+    text-align: center;
+}
+.input-area {
+    display: flex;
+    gap: 10px;
+}
+input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+button {
+    padding: 10px 15px;
+    border: none;
+    background: #007bff;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+}
+button:hover {
+    opacity: 0.9;
+}
+#todoList {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+#todoList li {
+    background: #eee;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.delete-btn {
+    background: #ff3b30;
+    padding: 5px 10px;
+    border-radius: 6px;
+    color: white;
+}
+.clear-all {
+    width: 100%;
+    margin-top: 15px;
+    background: #ff3b30;
+}
+</style>
+
+<!-- app.js -->
+<script>
+const input = document.getElementById("todoInput");
+const addBtn = document.getElementById("addBtn");
+const list = document.getElementById("todoList");
+const clearBtn = document.getElementById("clearBtn");
+
+// 添加功能
+addBtn.addEventListener("click", () => {
+    const text = input.value.trim();
+    if (!text) return;
+
+    const li = document.createElement("li");
+    li.innerHTML = `${text} <button class="delete-btn">删除</button>`;
+
+    // 删除单项
+    li.querySelector(".delete-btn").addEventListener("click", () => {
+        li.remove();
+    });
+
+    list.appendChild(li);
+    input.value = "";
+});
+
+// 清空所有
+clearBtn.addEventListener("click", () => {
+    list.innerHTML = "";
+});
+</script>
