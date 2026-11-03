@@ -1,4 +1,4 @@
-const $=s=>document.querySelector(s),KEY="haojie-9410-task-demo-v1";let editId=null;
+const $=s=>document.querySelector(s),KEY="haojie-2413783-task-demo-v1";let editId=null;
 const today=()=>{const n=new Date(),l=new Date(n.getTime()-n.getTimezoneOffset()*60000);return l.toISOString().slice(0,10)};
 const seed=()=>[{id:1,title:"完成需求分析",description:"整理验收标准并确定数据模型",due:today(),priority:"高",status:"已完成",created:1},{id:2,title:"实现任务看板",description:"完成增删改查、筛选和统计",due:add(2),priority:"高",status:"进行中",created:2},{id:3,title:"补充异常测试",description:"覆盖非法输入和重复提交",due:add(4),priority:"中",status:"待开始",created:3},{id:4,title:"录制项目演示",description:"按演示清单完成录屏",due:add(6),priority:"低",status:"待开始",created:4}];
 function add(days){const d=new Date();d.setDate(d.getDate()+days);const l=new Date(d.getTime()-d.getTimezoneOffset()*60000);return l.toISOString().slice(0,10)}
