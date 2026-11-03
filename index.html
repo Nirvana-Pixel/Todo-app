@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="刘浩杰 9410 个人任务与进度管理系统在线演示">
+  <title>进度舱 · 个人任务管理</title>
+  <link rel="stylesheet" href="./app.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div><p class="eyebrow">LIU HAOJIE · 9410</p><h1>把今天的任务，推进到完成。</h1><p>个人任务与进度管理系统在线演示</p></div>
+      <button class="primary" id="newBtn">＋ 新建任务</button>
+    </header>
+    <section class="stats" aria-label="任务统计">
+      <article><span>任务总数</span><strong id="total">0</strong><small>全部计划</small></article>
+      <article><span>进行中</span><strong id="active">0</strong><small>等待推进</small></article>
+      <article><span>已逾期</span><strong class="red" id="overdue">0</strong><small>需要关注</small></article>
+      <article class="lime"><span>完成率</span><strong><b id="rate">0</b>%</strong><small>实时更新</small></article>
+    </section>
+    <section class="workspace">
+      <aside class="panel analysis">
+        <p class="eyebrow">PROGRESS</p><h2>进度分析</h2>
+        <div class="ring" id="ring"><span><b id="ringText">0%</b><small>已完成</small></span></div>
+        <div id="bars"></div>
+        <p class="tip" id="tip"></p>
+      </aside>
+      <section class="panel board">
+        <div class="board-head"><div><p class="eyebrow">TASK BOARD</p><h2>任务看板</h2></div><span id="count">0 项</span></div>
+        <div class="filters">
+          <input id="search" placeholder="搜索任务名称或说明">
+          <select id="status"><option value="">全部状态</option><option>待开始</option><option>进行中</option><option>已完成</option><option>逾期</option></select>
+          <select id="priority"><option value="">全部优先级</option><option>高</option><option>中</option><option>低</option></select>
+          <select id="sort"><option value="due">截止日期升序</option><option value="priority">优先级排序</option><option value="new">最新创建</option></select>
+        </div>
+        <div id="list" class="list"></div>
+      </section>
+    </section>
+    <footer>综合实践第 2 题 · 数据仅保存在当前浏览器</footer>
+  </main>
+  <dialog id="dialog">
+    <form id="form">
+      <div class="dialog-head"><div><p class="eyebrow">TASK DETAILS</p><h2 id="dialogTitle">新建任务</h2></div><button type="button" class="circle" id="close">×</button></div>
+      <label>任务名称<input id="title" maxlength="80" required></label>
+      <label>任务说明<textarea id="description" maxlength="500" rows="3"></textarea></label>
+      <div class="form-row">
+        <label>截止日期<input id="due" type="date" required></label>
+        <label>优先级<select id="p"><option>高</option><option selected>中</option><option>低</option></select></label>
+        <label>状态<select id="s"><option>待开始</option><option>进行中</option><option>已完成</option></select></label>
+      </div>
+      <p id="error" class="error"></p>
+      <div class="actions"><button type="button" class="secondary" id="cancel">取消</button><button class="primary" type="submit">保存任务</button></div>
+    </form>
+  </dialog>
+  <div id="toast" class="toast"></div>
+  <script src="./app.js"></script>
+</body>
+</html>
+
